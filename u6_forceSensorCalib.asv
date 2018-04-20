@@ -1,0 +1,72 @@
+clc %Clear the MATLAB command window
+clear %Clear the MATLAB variables
+
+%filename = 'dataForce.mat';
+
+
+
+
+filename0    = 'dataForce-0.mat';
+filename2204 = 'dataForce-2204.mat';
+filename4231 = 'dataForce-4231.mat';
+filename5191 = 'dataForce-5191.mat';
+filename6193 = 'dataForce-6193.mat';
+filename8216 = 'dataForce-8216.mat';
+
+values = [];
+
+[F0, o0] = computeOffset(filename0);
+values = [values; o0 0];
+
+[F2204, o2204] = computeOffset(filename2204);
+values = [values ; o2204 2204];
+
+[F4231, o4231] = computeOffset(filename4231);
+values = [values ; o4231 4231];
+
+[F5191, o5191] = computeOffset(filename5191);
+values = [values ; o5191 5191];
+
+[F6193, o6193] = computeOffset(filename6193);
+values = [values ; o6193 6193];
+
+[F8216, o8216] = computeOffset(filename8216);
+values = [values ; o8216 8216];
+
+
+figure(1)
+plot(values(:,2),values(:,1)-o0, 'bo-');
+
+a = (values(end,1)-o0)/(values(end))
+
+
+figure(2)
+plot(F0(:,1), F0(:,2),'r');
+hold on 
+plot(F2204(:,1), F2204(:,2),'g');
+plot(F4231(:,1), F4231(:,2),'b');
+plot(F5191(:,1), F5191(:,2),'r');
+plot(F6193(:,1), F6193(:,2),'g');
+plot(F8216(:,1), F8216(:,2),'b');
+
+%moyenne = mean(dataIn)
+%moyenne2 = mean(dataOut)
+%plot(F(:,1), ones(length(F),1)*moyenne,'r--');
+%plot(F(:,1), ones(length(F),1)*moyenne2,'g--');
+
+
+%fc = 30;
+%fs = 100;
+%[b,a] = butter(6,fc/(fs/2));
+%freqz(b,a)
+%dataOut = filter(b,a,dataIn);
+
+%dataIn = F(:,2)-    1.9559;
+
+%offset du crochet +ceinture : 2.1064
+% largeur de la fenêtre
+%windowSize = 40;
+%dataOut = filter(ones(1,windowSize)/windowSize,1,dataIn);
+
+
+
